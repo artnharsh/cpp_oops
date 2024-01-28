@@ -28,19 +28,19 @@ void calc(mac& x, win& y){
     {
     case '+':
         result = x.a + y.b;
-        cout<<"output :\t"<<result;
+        cout<<"output :\t"<<result<<endl;
         break;
     case '-':
         result = x.a - y.b;
-        cout<<"output :\t"<<result;
+        cout<<"output :\t"<<result<<endl;
         break;
     case '*':
         result = x.a * y.b;
-        cout<<"output :\t"<<result;
+        cout<<"output :\t"<<result<<endl;
         break;
     case '/':
         result = x.a / y.b;
-        cout<<"output :\t"<<result;
+        cout<<"output :\t"<<result<<endl;
         break;    
     default:
         cout<<"Enter the appropriate operator";
@@ -51,8 +51,13 @@ void calc(mac& x, win& y){
 int main(){
     mac first;
     win second;
-    input(first, second);
-    calc(first, second);
-
+    int g = 1;
+    while(g == 1){
+        input(first, second);
+        calc(first, second);
+        cout<<"Enter 0 to end or enter 1 to repeat the task:\t"<<endl;
+        cin>>g;
+    }
+   
     return 0;
 }
