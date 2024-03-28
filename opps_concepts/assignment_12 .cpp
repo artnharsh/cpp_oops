@@ -1,5 +1,4 @@
 #include<iostream>
-
 using namespace std;
 class employee{
     private :
@@ -7,7 +6,7 @@ class employee{
             string emp_name[100], emp_sir[100];
             int emp_salary;
             string emp_dept[100];
-            int emp_phno[100];
+            float emp_phno[100];
             int emp_age[100];
     public :
             int n = 0;
@@ -16,7 +15,6 @@ class employee{
 };
 void employee :: get_details(){
             int i = 0;
-            int digit = 0;
             int min_age = 18;
             cout<<"\nHow many employes you want to add: ";
             cin>>n;
@@ -30,21 +28,39 @@ void employee :: get_details(){
                     try{
                         cout<<"\nEnter the age of the employee: ";
                         cin>>emp_age[i];
-                        if(emp_age[i] < min_age){
+                        if(emp_age[i] < min_age ){
                             throw min_age;
                         }else{
                             break;
                         }
                     }
                     catch( int k ){
-                        cout<<"\nEmployee age cannot be less than"<<min_age;
+                        cout<<"\nEmployee age cannot be less than"<<" "<<min_age;
                         cout<<"\nRe-Enter the age opf the employ !!";
                     }
                 }
-                cout<<"\nEnter the phone number of the employee: ";
-                cin>>emp_phno[i];
+                while(true){
+                    cout<<"\nEnter the phone number of the employee: ";
+                    cin>>emp_phno[i];
+                    int digit = 0;
+                    int temp_phno = emp_phno[i];
+                    while(temp_phno != 0){
+                        temp_phno = temp_phno/10;
+                        digit++;
+                    }
+                    try{
+                        if(digit != 10)
+                            throw digit;
+                        else   
+                            break;
+                    }
+                    catch(int d){
+                        cout<<"\nINVALID PHONE NUMBER !!!\nENTER THE VALID NUMBER!!!";
+                    }
+                }
                 cout<<"\nEnter the dept of the employee: ";
                 cin>>emp_dept[i];
+                cout<<"\n\n--------------------------------------------------------";
                 i++;
             }
 }
@@ -54,6 +70,7 @@ void employee :: show_details(){
                 throw "No Data Found!!!";
             else
                 cout<<"\nDetails of the employes are as follows";
+                cout<<"-----------------------------------------------------------------\n\n";
                 for(int  i = 0; i < n; i++){
                     cout<<"\nName: "<<emp_name[i]<<" "<<emp_sir[i];
                     cout<<"\nDept: "<<emp_dept[i];
@@ -74,7 +91,7 @@ void employee :: show_details(){
         catch( int a){
             cout<<"\nEnter the details first ;)";
         }
-        
+}     
 int main(){
     employee obj;
     int ch;
