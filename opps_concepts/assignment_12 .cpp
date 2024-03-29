@@ -11,16 +11,17 @@ private:
     int emp_age[100];
 public:
     int n = 0;
-    int prev;
     void get_details();
     void show_details();
 };
 
 void employee::get_details() {
-    int i;
+    int i = n;
     int min_age = 18;
+    int prev;
     cout << "\nHow many employees do you want to add: ";
-    cin >> n;
+    cin >> prev;
+    n = n + prev;
     while (i < n) {
         cout << "\nEnter the name and the surname of the employee"
             << "\n(eg. Harshal Patil)\n";
@@ -67,10 +68,10 @@ void employee::get_details() {
 void employee::show_details() {
     try {
         if (n == 0)
-            throw "No Data Found!!!";
+            throw n;
         else
             cout << "\nDetails of the employees are as follows";
-        cout << "-----------------------------------------------------------------\n\n";
+            cout << "\n\n-----------------------------------------------------------------\n\n";
         for (int i = 0; i < n; i++) {
             cout << "\nName: " << emp_name[i] << " " << emp_sir[i];
             cout << "\nDept: " << emp_dept[i];
@@ -91,7 +92,7 @@ void employee::show_details() {
 
     }
     catch (int a) {
-        cout << "\nEnter the details first ;)";
+        cout << "\nEnter the details first\n;)\n";
     }
 }
 
@@ -103,6 +104,7 @@ int main() {
         cout << "\n1. Enter employee details."
             << "\n2. Show employee details."
             << "\n3. Exit.\n";
+        cout<<"\nEnter your choice: ";
         cin >> ch;
         switch (ch) {
         case 1:
