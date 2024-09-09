@@ -9,7 +9,7 @@ private:
     //function to encrypt the password
     string encryptPassword(const string& password, int key = 5) {
         string encrypted = password;
-        for (size_t i = 0; i < password.size(); ++i) {
+        for (int i = 0; i < password.size(); ++i) {
             encrypted[i] = password[i] + key; //Shift the character by 'key'
         }
         return encrypted;
@@ -18,7 +18,7 @@ private:
     //function to decrypt the password
     string decryptPassword(const string& encryptedPassword, int key = 5) {
         string decrypted = encryptedPassword;
-        for (size_t i = 0; i < encryptedPassword.size(); ++i) {
+        for (int i = 0; i < encryptedPassword.size(); ++i) {
             decrypted[i] = encryptedPassword[i] - key; // Shift back the character by 'key'
         }
         return decrypted;
